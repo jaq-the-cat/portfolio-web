@@ -60,13 +60,14 @@ header ul li {
     font-size: 1.2rem;
 }
 
-a {
+a, header ul li {
     color: var(--deepOrange);
 }
 
-a:hover {
+a:hover, header ul li:hover {
     filter: brightness(150%);
     text-decoration: underline;
+    cursor: pointer;
 }
 
 body {

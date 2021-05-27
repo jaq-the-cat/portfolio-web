@@ -7,21 +7,24 @@
     <!-- Roboto -->
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
-    {% block css %}{% endblock css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='reviews.css') }}">
 </head>
 <body>
     <header>
         <h2>Jaquie's Portfolio</h2>
-        <h4>{% block title %}{% endblock title %}</h4>
+        {% if title is defined %}
+            <h4>{{ title }}</h4>
+        {% else %}
+            <h4>Index</h4>
+        {% endif  %}
         <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/reviews">Reviews</a></li>
-            <li><a href="/projects">Projects</a></li>
+            <li onclick=goToPage('/about')>About</li>
+            <li onclick=goToPage('/reviews')>Reviews</li>
+            <li onclick=goToPage('/projects')>Projects</li>
         </ul>
     </header>
     <main>
-        {% block body %}
-        {% endblock body %}
+        {% block body %}{% endblock body %}
     </main>
     <footer>
         <ul>
@@ -30,5 +33,5 @@
         </ul>
     </footer>
 </body>
-{% block js %}{% endblock js %}
+<script src="{{ url_for('static', filename='ajax.js') }}"></script>
 </html>

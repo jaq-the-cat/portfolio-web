@@ -1,7 +1,7 @@
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, jsonify, request
 from . import api
 
 app = Flask(__name__)
@@ -11,21 +11,35 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 contact = {"email": os.getenv('EMAIL'), "phone": os.getenv('PHONE')}
 
 @app.get('/')
-@app.get('/about')
+def index():
+    return render_template('base.html', **contact)
+
+@app.route('/about')
 def about():
-    return render_template('about.html', **contact)
+    if request.args.get('spa'):
+        return jsonify({
+            'title': 'About',
+            'html': render_template('about.html', reviews=api.get_posts(), spa=True),
+        })
+    return render_template('about.html', **contact, reviews=api.get_posts(), spa=False, title='About')
 
 @app.route('/reviews')
 def reviews():
-    return render_template('reviews.html', **contact, reviews=api.get_posts())
+    if request.args.get('spa'):
+        return jsonify({
+            'title': 'Reviews',
+            'html': render_template('reviews.html', reviews=api.get_posts(), spa=True),
+        })
+    return render_template('reviews.html', **contact, reviews=api.get_posts(), spa=False, title='Reviews')
 
 @app.get('/projects')
 def projects():
-    return render_template('projects.html', **contact, projects=api.get_projects())
-
-@app.post('/review')
-def addreview():
-    return redirect('/reviews')
+    if request.args.get('spa'):
+        return jsonify({
+            'title': 'Projects',
+            'html': render_template('projects.html', projects=api.get_projects(), spa=True),
+        })
+    return render_template('projects.html', **contact, reviews=api.get_posts(), spa=False, title='Projects')
 
 app.register_blueprint(api.bp)
 

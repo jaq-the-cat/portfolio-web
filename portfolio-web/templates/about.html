@@ -1,3 +1,9 @@
-{% extends 'base.html' %}
+{% if spa %}
 
-{% block title %}About me{% endblock title %}
+{% else %}
+
+    {% extends 'base.html' %}
+    {% block body %}
+    {% endblock body %}
+
+{% endif %}

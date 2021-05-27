@@ -1,17 +1,24 @@
-{% extends 'base.html' %}
+{% if spa %}
 
-{% block title %}Reviews{% endblock title %}
+    {% for review in reviews %}
+        <article>
+            <small>{{ review.get('contact') }}</small>
+            <h3>{{ review.get('name') }}</h3>
+            <p>{{ review.get('message') }}</p>
+        </article>
+    {% endfor %}
 
-{% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='reviews.css') }}">
-{% endblock css %}
+{% else %}
 
-{% block body %}
-{% for review in reviews %}
-    <article>
-        <small>{{ review.get('contact') }}</small>
-        <h3>{{ review.get('name') }}</h3>
-        <p>{{ review.get('message') }}</p>
-    </article>
-{% endfor %}
-{% endblock body %}
+    {% extends 'base.html' %}
+    {% block body %}
+        {% for review in reviews %}
+            <article>
+                <small>{{ review.get('contact') }}</small>
+                <h3>{{ review.get('name') }}</h3>
+                <p>{{ review.get('message') }}</p>
+            </article>
+        {% endfor %}
+    {% endblock body %}
+
+{% endif %}
