@@ -24,8 +24,8 @@ def projects():
 def addreview():
     return 'Add review'
 
-from . import api
-app.register_blueprint(api.bp)
+from .api import bp as api
+app.register_blueprint(api)
 
 # DEBUG
 @app.after_request
