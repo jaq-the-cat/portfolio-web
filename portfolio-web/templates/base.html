@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaquie's Portfolio</title>
+</head>
+{% block css %}{% endblock css %}
+<body>
+    <header>
+        <h3>Jaquie's Portfolio | {% block title %}{% endblock title %}</h3>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/reviews">Reviews</a></li>
+            <li><a href="/projects">Projects</a></li>
+        </ul>
+    </header>
+    <main>
+        {% block body %}
+        {% endblock body %}
+    </main>
+    <footer>
+        <ul>
+            <li><a href="mailto:{{ email }}">{{ email }}</a></li>
+            <li><a href="tel:{{ phone }}">{{ phone }}</a></li>
+        </ul>
+    </footer>
+</body>
+{% block js %}{% endblock js %}
+</html>

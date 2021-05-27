@@ -12,7 +12,7 @@ fs: gfs.Client = firestore.client()
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
-@bp.route('/projects')
+@bp.get('/projects')
 def api_projects():
     user: str = str(os.getenv('GITHUB_USER'))
     repos = _g.get_user(user).get_repos()
@@ -21,7 +21,7 @@ def api_projects():
         'description': repo.description,
     }, repos))
 
-@bp.route('/reviews')
+@bp.get('/reviews')
 def api_reviews():
     posts: List[gfs.DocumentSnapshot] = fs.collection('posts').get()
     return jsonify(list(

@@ -1,28 +1,28 @@
 import os
 
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 load_dotenv('.env')
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-@app.route('/about')
+@app.get('/')
+@app.get('/about')
 def about():
-    return 'About'
+    return render_template('about.html', email=os.getenv('EMAIL'), phone=os.getenv('PHONE'))
 
-@app.route('/')
 @app.route('/reviews')
 def reviews():
-    return 'Reviews'
+    return render_template('reviews.html')
 
-@app.route('/projects')
+@app.get('/projects')
 def projects():
-    return 'Projects'
+    return render_template('projects.html')
 
-@app.route('/review', methods=('GET', 'POST'))
+@app.post('/review')
 def addreview():
-    return 'Add review'
+    return jsonify(True)
 
 from .api import bp as api
 app.register_blueprint(api)
