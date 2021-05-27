@@ -19,7 +19,7 @@ def get_projects() -> List[Dict]:
     user: str = str(os.getenv('GITHUB_USER'))
     repos = _g.get_user(user).get_repos()
     return list(map(lambda repo: {
-        'url': f'https://github.com/{repo.full_name}',
+        'name': repo.full_name,
         'description': repo.description,
     }, repos))
 

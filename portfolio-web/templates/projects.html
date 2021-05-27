@@ -1,1 +1,16 @@
 {% extends 'base.html' %}
+
+{% block title %}Projects{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='reviews.css') }}">
+{% endblock css %}
+
+{% block body %}
+    {% for project in projects %}
+        <article>
+            <h3><a href="https://github.com/{{ project.get('name') }}">{{ project.get('name') }}</a></h3>
+            <p>{{ project.get('description') }}</p>
+        </article>
+    {% endfor %}
+{% endblock body %}
