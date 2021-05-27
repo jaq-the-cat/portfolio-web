@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaquie's Portfolio</title>
+    <!-- Roboto -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% block css %}{% endblock css %}
 </head>
-{% block css %}{% endblock css %}
 <body>
     <header>
-        <h3>Jaquie's Portfolio | {% block title %}{% endblock title %}</h3>
+        <h2>Jaquie's Portfolio</h2>
+        <h4>{% block title %}{% endblock title %}</h4>
         <ul>
             <li><a href="/about">About</a></li>
             <li><a href="/reviews">Reviews</a></li>
