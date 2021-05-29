@@ -39,7 +39,7 @@ def projects():
             'title': 'Projects',
             'html': render_template('projects.html', projects=api.get_projects(), spa=True),
         })
-    return render_template('projects.html', **contact, reviews=api.get_posts(), spa=False, title='Projects')
+    return render_template('projects.html', **contact, projects=api.get_projects(), spa=False, title='Projects')
 
 app.register_blueprint(api.bp)
 

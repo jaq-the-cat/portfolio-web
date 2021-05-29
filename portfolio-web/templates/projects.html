@@ -1,10 +1,12 @@
 {% if spa %}
 
     {% for project in projects %}
-        <article>
-            <h3><a href="https://github.com/{{ project.get('name') }}">{{ project.get('name') }}</a></h3>
-            <p>{{ project.get('description') }}</p>
-        </article>
+        <a href="https://github.com/{{ project.get('name') }}">
+            <article>
+                <h3>{{ project.get('name') }}</h3>
+                <p>{{ project.get('description') }}</p>
+            </article>
+        </a>
     {% endfor %}
 
 {% else %}
@@ -12,10 +14,12 @@
     {% extends 'base.html' %}
     {% block body %}
         {% for project in projects %}
-            <article>
-                <h3><a href="https://github.com/{{ project.get('name') }}">{{ project.get('name') }}</a></h3>
-                <p>{{ project.get('description') }}</p>
-            </article>
+            <a href="https://github.com/{{ project.get('name') }}">
+                <article>
+                    <h3>{{ project.get('name') }}</h3>
+                    <p>{{ project.get('description') }}</p>
+                </article>
+            </a>
         {% endfor %}
     {% endblock body %}
 
