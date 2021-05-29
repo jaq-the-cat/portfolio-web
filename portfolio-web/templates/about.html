@@ -1,9 +1,13 @@
-{% if spa %}
+{% macro code() -%}
+{% endmacro %}
 
-{% else %}
-
+{% if not spa %}
     {% extends 'base.html' %}
     {% block body %}
-    {% endblock body %}
 
+    {{ code() }}
+
+    {% endblock body %}
+{% else %}
+    {{ code() }}
 {% endif %}

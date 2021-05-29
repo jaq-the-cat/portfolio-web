@@ -1,5 +1,4 @@
-{% if spa %}
-
+{% macro code() -%}
     {% for review in reviews %}
         <article>
             <small>{{ review.get('contact') }}</small>
@@ -7,18 +6,15 @@
             <p>{{ review.get('message') }}</p>
         </article>
     {% endfor %}
+{% endmacro %}
 
-{% else %}
-
+{% if not spa %}
     {% extends 'base.html' %}
     {% block body %}
-        {% for review in reviews %}
-            <article>
-                <small>{{ review.get('contact') }}</small>
-                <h3>{{ review.get('name') }}</h3>
-                <p>{{ review.get('message') }}</p>
-            </article>
-        {% endfor %}
-    {% endblock body %}
 
+    {{ code() }}
+
+    {% endblock body %}
+{% else %}
+    {{ code() }}
 {% endif %}

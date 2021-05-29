@@ -10,10 +10,7 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 contact = {"email": os.getenv('EMAIL'), "phone": os.getenv('PHONE')}
 
-@app.get('/')
-def index():
-    return render_template('base.html', **contact)
-
+@app.route('/')
 @app.route('/about')
 def about():
     if request.args.get('spa'):

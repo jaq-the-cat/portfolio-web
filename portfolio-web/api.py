@@ -6,7 +6,7 @@ from firebase_admin import firestore
 from google.cloud import firestore as gfs
 from typing import List, Dict
 
-_g = Github()
+_g = Github(os.getenv('GITHUB_KEY'))
 fb = firebase_admin.initialize_app()
 fs: gfs.Client = firestore.client()
 

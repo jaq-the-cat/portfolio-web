@@ -1,5 +1,4 @@
-{% if spa %}
-
+{% macro code() -%}
     {% for project in projects %}
         <a href="https://github.com/{{ project.get('name') }}">
             <article>
@@ -8,19 +7,15 @@
             </article>
         </a>
     {% endfor %}
+{% endmacro %}
 
-{% else %}
-
+{% if not spa %}
     {% extends 'base.html' %}
     {% block body %}
-        {% for project in projects %}
-            <a href="https://github.com/{{ project.get('name') }}">
-                <article>
-                    <h3>{{ project.get('name') }}</h3>
-                    <p>{{ project.get('description') }}</p>
-                </article>
-            </a>
-        {% endfor %}
-    {% endblock body %}
 
+    {{ code() }}
+
+    {% endblock body %}
+{% else %}
+    {{ code() }}
 {% endif %}
