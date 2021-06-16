@@ -1,6 +1,6 @@
 {% macro code() -%}
     {% for project in projects %}
-        <a href="https://github.com/{{ project.get('name') }}">
+        <a target="_blank" href="https://github.com/{{ project.get('name') }}">
             <article>
                 <h3>{{ project.get('name') }}</h3>
                 <p>{{ project.get('description') }}</p>
