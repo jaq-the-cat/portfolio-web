@@ -61,13 +61,17 @@ header ul li {
 }
 
 a, header ul li {
+    border: 1px solid var(--deepOrange);
+    padding: 15px;
+    border-radius: 30px;
     color: var(--deepOrange);
+    transition: 0.2s all ease-in-out;
 }
 
 a:hover, header ul li:hover {
-    filter: brightness(150%);
-    text-decoration: underline;
     cursor: pointer;
+    background-color: var(--deepOrange);
+    color: white;
 }
 
 body {

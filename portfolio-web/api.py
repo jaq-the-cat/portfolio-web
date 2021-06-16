@@ -4,7 +4,6 @@ from github import Github
 import firebase_admin
 from firebase_admin import firestore
 from google.cloud import firestore as gfs
-from typing import List, Dict
 
 _g = Github(os.getenv('GITHUB_KEY'))
 fb = firebase_admin.initialize_app()
@@ -12,10 +11,10 @@ fs: gfs.Client = firestore.client()
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
-def get_posts() -> List[gfs.DocumentSnapshot]:
+def get_posts() -> list[gfs.DocumentSnapshot]:
     return fs.collection('posts').get()
 
-def get_projects() -> List[Dict]:
+def get_projects() -> list[dict[str, str]]:
     user: str = str(os.getenv('GITHUB_USER'))
     repos = _g.get_user(user).get_repos()
     return list(map(lambda repo: {
