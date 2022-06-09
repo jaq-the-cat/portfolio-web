@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaquie's Portfolio</title>
     <!-- Roboto -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='{{ url_for('static', filename='fonts/AcPlus_IBM_VGA_9x14.ttf') }}'>
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='reviews.css') }}">
-</head>
-<body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reviews.css') }}">
+  </head>
+  <body>
     <header>
-        <h2>Jaquie's Portfolio</h2>
-        {% if title is defined %}
-            <h4>{{ title }}</h4>
-        {% else %}
-            <h4>Index</h4>
-        {% endif  %}
-        <ul>
-            <li onclick=goToPage('/about')>About</li>
-            <li onclick=goToPage('/reviews')>Reviews</li>
-            <li onclick=goToPage('/projects')>Projects</li>
-        </ul>
+      <h2>Jaquie's Portfolio</h2>
+      <small>No, I am not a frontend developer</small>
+      {% if title is defined %}
+        <h4>{{ title }}</h4>
+      {% else %}
+        <h4>Index</h4>
+      {% endif  %}
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/reviews">Reviews</a></li>
+        <li><a href="/projects">Projects</a></li>
+      </ul>
     </header>
     <main>
-        {% block body %}{% endblock body %}
+      {% block body %}{% endblock body %}
     </main>
     <footer>
-        <ul>
-            <li><a target="_blank" href="mailto:{{ email }}">{{ email }}</a></li>
-            <li><a target="_blank" href="tel:{{ phone }}">{{ phone }}</a></li>
-        </ul>
+      <ul>
+        <li><a target="_blank" href="mailto:{{ email }}">{{ email }}</a></li>
+        <li><a target="_blank" href="tel:{{ phone }}">{{ phone }}</a></li>
+      </ul>
     </footer>
-</body>
-<script src="{{ url_for('static', filename='ajax.js') }}"></script>
+  </body>
+  <script src="{{ url_for('static', filename='ajax.js') }}"></script>
 </html>

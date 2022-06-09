@@ -13,30 +13,15 @@ contact = {"email": os.getenv('EMAIL'), "phone": os.getenv('PHONE')}
 @app.route('/')
 @app.route('/about')
 def about():
-    if request.args.get('spa'):
-        return jsonify({
-            'title': 'About',
-            'html': render_template('about.html', reviews=api.get_posts(), spa=True),
-        })
-    return render_template('about.html', **contact, reviews=api.get_posts(), spa=False, title='About')
+    return render_template('about.html', **contact, reviews=api.get_posts(), title='About')
 
 @app.route('/reviews')
 def reviews():
-    if request.args.get('spa'):
-        return jsonify({
-            'title': 'Reviews',
-            'html': render_template('reviews.html', reviews=api.get_posts(), spa=True),
-        })
-    return render_template('reviews.html', **contact, reviews=api.get_posts(), spa=False, title='Reviews')
+    return render_template('reviews.html', **contact, reviews=api.get_posts(), title='Reviews')
 
 @app.get('/projects')
 def projects():
-    if request.args.get('spa'):
-        return jsonify({
-            'title': 'Projects',
-            'html': render_template('projects.html', projects=api.get_projects(), spa=True),
-        })
-    return render_template('projects.html', **contact, projects=api.get_projects(), spa=False, title='Projects')
+    return render_template('projects.html', **contact, projects=api.get_projects(), title='Projects')
 
 app.register_blueprint(api.bp)
 

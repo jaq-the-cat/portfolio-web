@@ -1,21 +1,16 @@
 {% macro code() -%}
-    {% for project in projects %}
-        <a target="_blank" href="https://github.com/{{ project.get('name') }}">
-            <article>
-                <h3>{{ project.get('name') }}</h3>
-                <p>{{ project.get('description') }}</p>
-            </article>
-        </a>
-    {% endfor %}
 {% endmacro %}
 
-{% if not spa %}
-    {% extends 'base.html' %}
-    {% block body %}
+{% extends 'base.html' %}
+{% block body %}
 
-    {{ code() }}
+{% for project in projects %}
+  <a target="_blank" href="https://github.com/{{ project.get('name') }}">
+    <article>
+      <h3>{{ project.get('name') }}</h3>
+      <p>{{ project.get('description') }}</p>
+    </article>
+  </a>
+{% endfor %}
 
-    {% endblock body %}
-{% else %}
-    {{ code() }}
-{% endif %}
+{% endblock body %}
