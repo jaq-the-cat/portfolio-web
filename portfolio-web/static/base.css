@@ -1,10 +1,10 @@
 :root {
+    --yellow: #ffff4b; /* titles */
     --green: #00ff00;
-    --red: #ff0000;
-    --blue: #00ffff;
-    --yellow: #ffff4b;
+    --red: #ff0000; /* comments */
+    --blue: #00ffff; /* data */
     --magenta: #00c0c0;
-    font-size: 16pt;
+    font-size: 18pt;
 }
 
 * {
@@ -18,11 +18,60 @@
     box-sizing: border-box;
 }
 
-small:first-of-type {
-  font-size: 0.9rem;
+html, body {
+    height: 100%;
+}
+
+body {
+  padding: 15px;
+}
+
+.comment {
   color: var(--red);
 }
 
-html, body {
-    height: 100%;
+.comment::before {
+  content: "// ";
+}
+
+.title {
+  color: var(--yellow);
+}
+
+.data {
+  color: var(--blue);
+}
+
+a.data::before {
+  content: "[";
+  color: var(--blue);
+}
+
+a.data::after {
+  content: "]";
+  color: var(--blue);
+}
+
+header h2 {
+  margin-bottom: 2px;
+}
+
+header small {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+header ul {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+footer a {
+  color: var(--blue);
 }

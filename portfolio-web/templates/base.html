@@ -11,17 +11,17 @@
   </head>
   <body>
     <header>
-      <h2>Jaquie's Portfolio</h2>
-      <small>No, I am not a frontend developer</small>
+      <h2 class="title">Jaquie's Portfolio</h2>
+      <small class="comment">No, I am not a frontend developer</small>
       {% if title is defined %}
-        <h4>{{ title }}</h4>
+        <h1 class="title">{{ title }}</h1>
       {% else %}
-        <h4>Index</h4>
+        <h1 class="title">Index</h1>
       {% endif  %}
       <ul>
-        <li><a href="/about">About</a></li>
-        <li><a href="/reviews">Reviews</a></li>
-        <li><a href="/projects">Projects</a></li>
+        <li><a class="data" href="/about">About</a></li>
+        <li><a class="data" href="/reviews">Reviews</a></li>
+        <li><a class="data" href="/projects">Projects</a></li>
       </ul>
     </header>
     <main>
@@ -29,10 +29,9 @@
     </main>
     <footer>
       <ul>
-        <li><a target="_blank" href="mailto:{{ email }}">{{ email }}</a></li>
-        <li><a target="_blank" href="tel:{{ phone }}">{{ phone }}</a></li>
+        <li><a class="data" target="_blank" href="mailto:{{ email }}">{{ email }}</a></li>
+        <li><a class="data" target="_blank" href="tel:{{ phone }}">{{ phone }}</a></li>
       </ul>
     </footer>
   </body>
-  <script src="{{ url_for('static', filename='ajax.js') }}"></script>
 </html>
